@@ -75,7 +75,7 @@ def vocabulary_quiz(input_dictionary: dict):
 
     max_number_of_tries = 3
     number_of_tries = 0
-    while True and number_of_tries < max_number_of_tries:
+    while number_of_tries < max_number_of_tries:
         answer = input(f"Translate this:\n\t{the_word}\nTranslation:\n\t")
         if answer.lower() != the_translation.lower():
             number_of_tries += 1
