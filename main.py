@@ -9,6 +9,7 @@ def main():
     dictionary = read_from_file("dictionary.txt")
     clear_screen()
 
+    # Shows the user a menu with choices.
     while True:
         menu_choices = input("\n[D]ictionary, [Q]uiz, [S]core, [E]xit: ")
         clear_screen()
@@ -23,17 +24,18 @@ def main():
 
 
 def read_from_file(filename: str):
+    # Returns the content of a file in the form of a dictionary.
     new_dictionary = {}
     try:
         f = open(filename, 'r')
         for line in f:
-            # Assume words are split with a colon
+            # Assume words are split with a colon.
             word1 = line.split(":")[0]
             word2 = line.split(":")[1]
-            # Remove linebreaks
+            # Remove linebreaks.
             word1 = word1.strip("\n")
             word2 = word2.strip("\n")
-            # Add the words to our dictionary
+            # Add the words to our dictionary.
             new_dictionary.update({word1: word2})
         f.close()
         return new_dictionary
@@ -46,9 +48,10 @@ def read_from_file(filename: str):
 
 
 def pick_a_random_key_or_value(input_dictionary: dict):
-    # Since we can't pick random from a dict we put it's content in a list for this function to work
+    # Returns a random value-key pair from a dictionary.
+    # Since we can't pick random from a dict we put it's content in a list for this function to work.
     key, value = random.choice(list(input_dictionary.items()))
-    # Randomly pick if we return the key or the value first
+    # Randomly pick if we return the key or the value first.
     if random.randint(1, 2) == 1:
         return key, value
     else:
@@ -56,6 +59,7 @@ def pick_a_random_key_or_value(input_dictionary: dict):
 
 
 def print_formatted_dictionary(input_dictionary: dict):
+    # Show the content of a dictionary with custom formatting.
     print("")
     for key, value in input_dictionary.items():
         if len(key) < 7:
@@ -65,9 +69,10 @@ def print_formatted_dictionary(input_dictionary: dict):
 
 
 def vocabulary_quiz(input_dictionary: dict):
+    # Ask the user a question. User get a limited number of attempts.
+    # Function returns 1 if the answer is correct and 0 if not.
     the_word, the_translation = pick_a_random_key_or_value(input_dictionary)
-    
-    # User get a limited amount of attempts.
+
     max_number_of_tries = 3
     number_of_tries = 0
     while True and number_of_tries < max_number_of_tries:
@@ -85,19 +90,20 @@ def vocabulary_quiz(input_dictionary: dict):
 
 
 def user_quit(score: int):
+    # Shows the users score before exiting.
     print(f"\nGoodbye! You achieved a total score of {score} points.\n")
     sleep(2)
     exit()
 
 
 def clear_screen():
-  # Clears the screen. nt = windows, if not we assume it's mac\linux
+  # Clears the screen. nt = windows, if not we assume it's mac\linux.
   if name == 'nt':
     _ = system('cls')
   else:
     _ = system('clear')
 
 
-# call main if not a module
+# call main if not a module.
 if __name__=="__main__": 
-    main() 
+    main()
