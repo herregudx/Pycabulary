@@ -29,14 +29,14 @@ def read_from_file(filename: str):
     try:
         f = open(filename, 'r')
         for line in f:
-            # Assume words are split with a colon.
-            word1 = line.split(":")[0]
-            word2 = line.split(":")[1]
+            # Assume words are seperated with a colon.
+            key = line.split(":")[0]
+            value = line.split(":")[1]
             # Remove linebreaks.
-            word1 = word1.strip("\n")
-            word2 = word2.strip("\n")
+            key = key.strip("\n")
+            value = value.strip("\n")
             # Add the words to our dictionary.
-            new_dictionary.update({word1: word2})
+            new_dictionary.update({key: value})
         f.close()
         return new_dictionary
     except OSError:
