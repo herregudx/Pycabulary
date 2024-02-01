@@ -1,0 +1,8 @@
+Hola:Hei
+Si:Ja
+No:Nei
+Gracias:Takk
+Buenos dias:God dag
+Buenas tardes:God kveld
+Buenas noches:God natt
+Adios:Adjø
