@@ -11,15 +11,15 @@ def main():
 
     # Shows the user a menu with choices.
     while True:
-        menu_choices = input("\n[D]ictionary, [Q]uiz, [S]core, [E]xit: ")
+        menu_choice = input("\n[D]ictionary, [Q]uiz, [S]core, [E]xit: ")
         clear_screen()
-        if menu_choices.upper() == "D":
+        if menu_choice.upper() == "D":
             print_formatted_dictionary(dictionary)
-        elif menu_choices.upper() == "Q":
+        elif menu_choice.upper() == "Q":
             user_score += vocabulary_quiz(dictionary)
-        elif menu_choices.upper() == "S":
+        elif menu_choice.upper() == "S":
             print(f"\nYour score: {user_score}")
-        elif menu_choices.upper() == "E":
+        elif menu_choice.upper() == "E":
             user_quit(user_score)
 
 
@@ -76,16 +76,16 @@ def vocabulary_quiz(input_dictionary: dict):
     max_number_of_tries = 3
     number_of_tries = 0
     while number_of_tries < max_number_of_tries:
-        answer = input(f"Translate this:\n\t{the_word}\nTranslation:\n\t")
-        if answer.lower() != the_translation.lower():
+        users_answer = input(f"Translate this:\n\t{the_word}\nTranslation:\n\t")
+        if users_answer.lower() == the_translation.lower():
+            print("Correct!\n")
+            return 1
+        else:
             number_of_tries += 1
             if number_of_tries == (max_number_of_tries - 1):
                 print(f"Incorrect! You have 1 try left.\n")
             else:
                 print(f"Incorrect! You have {max_number_of_tries - number_of_tries} tries left.\n")
-        elif answer.lower() == the_translation.lower():
-            print("Correct!")
-            return 1
     return 0
 
 
