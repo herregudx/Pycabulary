@@ -29,13 +29,13 @@ def read_from_file(filename: str):
     try:
         f = open(filename, 'r')
         for line in f:
-            # Assume words are seperated with a colon.
+            # Assume keys and values are seperated with a colon.
             key = line.split(":")[0]
             value = line.split(":")[1]
             # Remove linebreaks.
             key = key.strip("\n")
             value = value.strip("\n")
-            # Add the words to our dictionary.
+            # Add the key and value to our dictionary.
             new_dictionary.update({key: value})
         f.close()
         return new_dictionary
