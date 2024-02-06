@@ -104,6 +104,6 @@ def clear_screen():
     _ = system('clear')
 
 
-# call main if not a module.
+# Call main if not a module.
 if __name__=="__main__": 
     main()
